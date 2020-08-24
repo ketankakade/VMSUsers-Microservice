@@ -37,7 +37,7 @@ public class User {
 	public static final String LAST_LOGIN_AT = "lastLoginAt";
 	public static final String IS_BLACK_LISTED = "isBlackListed";
 	public static final String FAILED_ATTEMPTS = "failedAttempts";
-	public static final String USER_TYPE = "userType";
+	public static final String USER_CATEGORY = "userCategory";
 	public static final String CREATED_TIMESTAMP = "createdTs";
 	public static final String UPDATED_TIMESTAMP = "updatedTs";
 
@@ -55,10 +55,10 @@ public class User {
 	@Column(name = PRIMARY_EMAIL_ID, nullable = false)
 	private String primaryEmailId;
 
-	@Column(name = PRIMARY_CONTACT_NUMBER, length = 15, nullable = false)
+	@Column(name = PRIMARY_CONTACT_NUMBER, length = 10, nullable = false)
 	private String primaryContactNumber;
 
-	@Column(name = ALTERNATE_CONTACT_NUMBER, nullable = false)
+	@Column(name = ALTERNATE_CONTACT_NUMBER)
 	private String alternateContactNumber;
 
 	@Column(name = SIGNIN_COUNT)
@@ -72,23 +72,23 @@ public class User {
 	@Column(name = UPDATED_TIMESTAMP)
 	private Timestamp updatedTs;
 
-	@Column(name = DISPLAY_NAME, nullable = false)
+	@Column(name = DISPLAY_NAME)
 	private String displayName;
 
-	@Column(name = AVTAR_URL, nullable = false)
+	@Column(name = AVTAR_URL)
 	private String avtarUrl;
 
-	@Column(name = LAST_LOGIN_AT, nullable = false)
+	@Column(name = LAST_LOGIN_AT)
 	private Timestamp lastLoginAt;
 	
-	@Column(name = IS_BLACK_LISTED, nullable = false)
+	@Column(name = IS_BLACK_LISTED)
 	private Integer isBlackListed;
 	
-	@Column(name = FAILED_ATTEMPTS, nullable = false)
+	@Column(name = FAILED_ATTEMPTS)
 	private Integer failedAttempts;
 	
-	@Column(name = USER_TYPE, nullable = false)
-	private Integer userType;
+	@Column(name = USER_CATEGORY)
+	private String userCategory;
 
 
 }

@@ -105,7 +105,7 @@ public class UserServiceImpl implements UserService {
 			genericResponse.setMessage("user data is missing in request");
 		} else {
 			UserDTO user = userDao.update(userDto);
-			if (user == null) {
+			if (user != null) {
 				genericResponse.setStatusCode(HttpStatus.OK.value());
 				genericResponse.setMessage("Success");
 				genericResponse.setData(Collections.singletonList(user));

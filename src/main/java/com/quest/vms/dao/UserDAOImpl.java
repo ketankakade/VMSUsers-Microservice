@@ -46,13 +46,13 @@ public class UserDAOImpl implements UserDAO {
 
 	@Override
 	public UserDTO update(UserDTO userDto) {
-		log.info("Update user details::Userr: {}", userDto.getUserId());
-		Optional<User> user = userRepository.findById(userDto.getUserId());
+		log.info("Update user details::Userr: {}", userDto.getUuid());
+		Optional<User> user = userRepository.findById(userDto.getUuid());
 		if (user == null) {
 			return null;
 		} else {
 			User userToBeUpdated = transformDtoToEntity(userDto);
-			userToBeUpdated.setUuid(userDto.getUserId());
+			userToBeUpdated.setUuid(userDto.getUuid());
 			userToBeUpdated.setCreatedTs(user.get().getCreatedTs());
 			userToBeUpdated = userRepository.save(userToBeUpdated);
 			return transformEntityToDto(userToBeUpdated);
@@ -86,12 +86,11 @@ public class UserDAOImpl implements UserDAO {
 	}	
 	
 	public User transformDtoToEntity(UserDTO dto) {
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
 		return modelMapper.map(dto, User.class);
 	}
 
 	public UserDTO transformEntityToDto(User entity) {
-		modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.LOOSE);
+
 		return modelMapper.map(entity, UserDTO.class);
 	}
 
