@@ -89,7 +89,7 @@ public class UserDAOImpl implements UserDAO {
 	public List<UserDTO> searchUser(String userCategory, String userName) {
 		
 		List<UserDTO> userDTOList = new ArrayList<>();
-		List<User> listedUsers = userRepository.findByFilter(userName, userCategory);
+		List<User> listedUsers = userRepository.findByFirstNameAndUserCategory(userName, userCategory);
 		for (User user : listedUsers) {
 			UserDTO userDTO = transformEntityToDto(user);
 			userDTOList.add(userDTO);

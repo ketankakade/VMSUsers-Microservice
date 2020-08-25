@@ -14,11 +14,7 @@ import com.quest.vms.entity.User;
 @Repository
 public interface UserRepository
 		extends JpaRepository<User, Integer>, PagingAndSortingRepository<User, Integer> {
-	@Query("select u from User u where "
-			+ " ( u.firstName=?1 or ?1 is NULL or ?1 = '' )  and "
-			+ " ( u.userCategory=?2 or ?2 is NULL or ?2 = '' ) and "			
-			)
-	public List<User> findByFilter(@Param("firstName") String firstName,
-			@Param("userCategory") String userCategory);
+	
+	public List<User> findByFirstNameAndUserCategory( String firstName, String userCategory);
 
 }
