@@ -114,5 +114,20 @@ public class UserServiceImpl implements UserService {
 			}
 		}
 		return genericResponse;
-	}	
+	}
+	
+	@Override
+	public GenericResponse<UserDTO> searchUser(String userCategory,	String userName) {
+		GenericResponse<UserDTO> genericResponse = new GenericResponse<>(ErrorCodes.BAD_REQUEST_STATUS_CODE,
+				"BAD_REQUEST", null, null);
+		List<UserDTO> list = userDao.searchUser(userCategory, userName);
+		if (list.isEmpty()) {
+			genericResponse.setMessage("Failed to fetch user");
+		} else {
+			genericResponse.setData(list);
+			genericResponse.setMessage("Success");
+			genericResponse.setStatusCode(HttpStatus.OK.value());
+		}
+		return genericResponse;
+	}
 }

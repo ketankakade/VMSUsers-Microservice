@@ -100,5 +100,23 @@ public class UserController {
 			log.error(e.getMessage());
 			return updateUserGenericResponse;
 		}
-	}	
+	}
+	
+	@ApiOperation(value = "Get All Users by filter")
+	@GetMapping("/listUsers")
+	public GenericResponse<UserDTO> searchUser(
+			// approved or not
+			@RequestParam(value = "userCategory", required = false) String userCategory,
+			@RequestParam(value = "userName", required = false) String userName)
+	{
+			
+		GenericResponse<UserDTO> filerListUserGenericResponse = null;
+		try {
+			filerListUserGenericResponse = userService.searchUser(userCategory, userName);
+			return filerListUserGenericResponse;
+		} catch (Exception e) {
+			log.error(e.getMessage());
+			return filerListUserGenericResponse;
+		}
+	}
 }

@@ -17,4 +17,6 @@ public interface UserService {
 
 	public GenericResponse<UserDTO> listUsers(String index, String size, String sortBy, Direction orderBy);
 	
+	public GenericResponse<UserDTO> searchUser(String userCategory, String userName);
+	
 	}

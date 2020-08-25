@@ -19,5 +19,7 @@ public interface UserDAO {
 
 	public List<UserDTO> listUsers(final String pageNo, final String pageSize, final String sortProperty,
 			Direction orderBy);
+	
+	public List<UserDTO> searchUser(String userCategory, String userName);
 
 }

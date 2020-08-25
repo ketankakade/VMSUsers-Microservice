@@ -7,7 +7,6 @@ import java.util.List;
 import java.util.Optional;
 
 import org.modelmapper.ModelMapper;
-import org.modelmapper.convention.MatchingStrategies;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -84,6 +83,20 @@ public class UserDAOImpl implements UserDAO {
 		}
 		return userDTOList;
 	}	
+	
+	
+	@Override
+	public List<UserDTO> searchUser(String userCategory, String userName) {
+		
+		List<UserDTO> userDTOList = new ArrayList<>();
+		List<User> listedUsers = userRepository.findByFilter(userName, userCategory);
+		for (User user : listedUsers) {
+			UserDTO userDTO = transformEntityToDto(user);
+			userDTOList.add(userDTO);
+		}
+		return userDTOList;
+	}
+
 	
 	public User transformDtoToEntity(UserDTO dto) {
 		return modelMapper.map(dto, User.class);
