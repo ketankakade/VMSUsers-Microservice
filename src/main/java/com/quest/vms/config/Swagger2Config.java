@@ -1,4 +1,4 @@
-package com.quest.vms.swaggerConfig;
+package com.quest.vms.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
