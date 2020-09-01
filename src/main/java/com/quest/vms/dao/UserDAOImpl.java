@@ -1,7 +1,5 @@
 package com.quest.vms.dao;
 
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -82,12 +80,11 @@ public class UserDAOImpl implements UserDAO {
 			userDTOList.add(userDTO);
 		}
 		return userDTOList;
-	}	
-	
-	
+	}
+
 	@Override
 	public List<UserDTO> searchUser(String userCategory, String userName) {
-		
+
 		List<UserDTO> userDTOList = new ArrayList<>();
 		List<User> listedUsers = userRepository.findByFirstNameAndUserCategory(userName, userCategory);
 		for (User user : listedUsers) {
@@ -97,7 +94,6 @@ public class UserDAOImpl implements UserDAO {
 		return userDTOList;
 	}
 
-	
 	public User transformDtoToEntity(UserDTO dto) {
 		return modelMapper.map(dto, User.class);
 	}
@@ -107,5 +103,4 @@ public class UserDAOImpl implements UserDAO {
 		return modelMapper.map(entity, UserDTO.class);
 	}
 
-	
 }

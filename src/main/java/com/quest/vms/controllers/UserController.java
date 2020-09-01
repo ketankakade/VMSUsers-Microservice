@@ -2,7 +2,7 @@ package com.quest.vms.controllers;
 
 import static com.quest.vms.common.utils.VmsConstants.ID;
 import static com.quest.vms.common.utils.VmsConstants.USER;
-import static com.quest.vms.common.utils.VmsConstants.USERS_URL_PATH;
+import static com.quest.vms.common.utils.VmsConstants.USER_URL_PATH;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
@@ -25,11 +25,12 @@ import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 
 @RestController
-@RequestMapping("/" + USERS_URL_PATH)
+@RequestMapping("/" + USER_URL_PATH)
 @Api(value = "Visitor Management System", description = "Operations pertaining to Visitor Management System")
 @Slf4j
 public class UserController {
 
+	private static final String ROLE_ADMIN = "USER";
 	@Autowired
 	private UserService userService;
 
@@ -75,7 +76,6 @@ public class UserController {
 		}
 	}
 
-	
 	@ApiOperation(value = "Delete User from system")
 	@DeleteMapping(USER + "/{id}")
 	public GenericResponse<?> deleteUser(@PathVariable(value = "id") Integer userId) {
@@ -101,15 +101,13 @@ public class UserController {
 			return updateUserGenericResponse;
 		}
 	}
-	
+
 	@ApiOperation(value = "Get All Users by filter")
 	@GetMapping("/listUsers")
 	public GenericResponse<UserDTO> searchUser(
 			// approved or not
 			@RequestParam(value = "userCategory", required = false) String userCategory,
-			@RequestParam(value = "userName", required = false) String userName)
-	{
-			
+			@RequestParam(value = "userName", required = false) String userName) {
 		GenericResponse<UserDTO> filerListUserGenericResponse = null;
 		try {
 			filerListUserGenericResponse = userService.searchUser(userCategory, userName);

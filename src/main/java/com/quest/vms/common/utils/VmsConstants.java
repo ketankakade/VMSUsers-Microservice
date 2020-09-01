@@ -5,7 +5,8 @@ public class VmsConstants {
   }
   
   // endpoints
-  public static final String USERS_URL_PATH = "user";
+  public static final String AUTH_URL_PATH = "auth";
+  public static final String USER_URL_PATH = "user";
   public static final String USER = "/user";
   public static final String ID = "id";
   

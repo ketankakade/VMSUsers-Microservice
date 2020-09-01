@@ -1,12 +1,5 @@
 package com.quest.vms.dto;
 
-import java.security.Timestamp;
-import java.time.LocalDateTime;
-
-import org.hibernate.annotations.CreationTimestamp;
-import org.hibernate.annotations.UpdateTimestamp;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.annotation.JsonInclude.Include;
 
@@ -22,9 +15,9 @@ import lombok.NoArgsConstructor;
 @JsonInclude(value = Include.NON_NULL)
 public class UserDTO {
 
-	
 	private Integer uuid;
 	private String primaryEmailId;
+	private String userName;
 	private String primaryContactNumber;
 	private String alternateContactNumber;
 	private Integer signInCount;

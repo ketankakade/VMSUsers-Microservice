@@ -26,6 +26,7 @@ import lombok.NoArgsConstructor;
 public class User {
 
 	public static final String USER_ID = "uuid";
+	public static final String USER_NAME = "userName";
 	public static final String PRIMARY_EMAIL_ID = "primaryEmailId";
 	public static final String PRIMARY_CONTACT_NUMBER = "primaryContactNumber";
 	public static final String ALTERNATE_CONTACT_NUMBER = "alternateContactNumber";
@@ -51,6 +52,9 @@ public class User {
 
 	@Column(name = LAST_NAME, nullable = false)
 	private String lastName;
+	
+	@Column(name = USER_NAME, nullable = false)
+	private String userName;
 
 	@Column(name = PRIMARY_EMAIL_ID, nullable = false)
 	private String primaryEmailId;
